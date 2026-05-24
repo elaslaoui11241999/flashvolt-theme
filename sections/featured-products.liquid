@@ -1,0 +1,94 @@
+<section style="background:#f9f9f9; padding:80px 40px;">
+  <div style="max-width:1200px; margin:0 auto;">
+    <div style="text-align:center; margin-bottom:48px;">
+      <span style="color:#f5a623; font-size:12px; font-weight:700; letter-spacing:3px; text-transform:uppercase;">
+        {{ section.settings.tag }}
+      </span>
+      <h2 style="font-size:42px; font-weight:800; margin:12px 0 0; color:#111;">
+        {{ section.settings.title }}
+      </h2>
+    </div>
+
+    <div style="
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+    ">
+      {% assign limit = section.settings.products_to_show %}
+      {% for product in collections.all.products limit: limit %}
+      <a href="{{ product.url }}" style="text-decoration:none; color:inherit;">
+        <div style="
+          background: #fff;
+          border-radius: 8px;
+          overflow: hidden;
+          box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+        ">
+          {% if product.featured_image %}
+          <img src="{{ product.featured_image | img_url: '400x400', crop: 'center' }}"
+               alt="{{ product.title }}"
+               style="width:100%; height:240px; object-fit:cover; display:block;">
+          {% else %}
+          <div style="width:100%; height:240px; background:#eee; display:flex; align-items:center; justify-content:center;">
+            <span style="color:#999; font-size:14px;">Sin imagen</span>
+          </div>
+          {% endif %}
+          <div style="padding:20px;">
+            <p style="font-size:12px; color:#999; margin:0 0 6px; text-transform:uppercase; letter-spacing:1px;">
+              {{ product.vendor }}
+            </p>
+            <h3 style="font-size:16px; font-weight:700; margin:0 0 12px; color:#111;">
+              {{ product.title }}
+            </h3>
+            <div style="display:flex; align-items:center; justify-content:space-between;">
+              <span style="font-size:20px; font-weight:800; color:#111;">
+                {{ product.price | money }}
+              </span>
+              <span style="
+                background:#111;
+                color:#fff;
+                padding:8px 18px;
+                border-radius:4px;
+                font-size:13px;
+                font-weight:600;
+              ">Añadir</span>
+            </div>
+          </div>
+        </div>
+      </a>
+      {% endfor %}
+
+      {% if collections.all.products.size == 0 %}
+      <p style="color:#999; text-align:center; grid-column:1/-1;">
+        No hay productos disponibles.
+      </p>
+      {% endif %}
+    </div>
+
+    {% if section.settings.show_view_all %}
+    <div style="text-align:center; margin-top:48px;">
+      <a href="/collections/all" style="
+        border: 2px solid #111;
+        color: #111;
+        padding: 14px 40px;
+        border-radius: 4px;
+        font-weight: 700;
+        font-size: 15px;
+        text-decoration: none;
+      ">Ver todos los productos</a>
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Productos Destacados",
+  "settings": [
+    { "type": "text", "id": "tag", "label": "Tag", "default": "Catálogo" },
+    { "type": "text", "id": "title", "label": "Título", "default": "Nuestros productos" },
+    { "type": "range", "id": "products_to_show", "label": "Productos a mostrar", "min": 2, "max": 12, "step": 1, "default": 6 },
+    { "type": "checkbox", "id": "show_view_all", "label": "Mostrar botón 'Ver todos'", "default": true }
+  ],
+  "presets": [{ "name": "Productos Destacados" }]
+}
+{% endschema %}
