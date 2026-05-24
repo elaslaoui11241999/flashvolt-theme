@@ -4,8 +4,6 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="theme-color" content="#0d0d1a">
-    <link rel="canonical" href="{{ canonical_url }}">
     <title>{{ page_title }} &ndash; {{ shop.name }}</title>
     {% if page_description %}
       <meta name="description" content="{{ page_description | escape }}">
@@ -17,11 +15,11 @@
     {{ 'base.css' | asset_url | stylesheet_tag }}
   </head>
   <body>
-    {% sections 'header-group' %}
+    {% section 'header' %}
     <main id="MainContent" role="main">
       {{ content_for_layout }}
     </main>
-    {% sections 'footer-group' %}
+    {% section 'footer' %}
     {{ 'theme.js' | asset_url | script_tag }}
   </body>
 </html>
