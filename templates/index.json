@@ -1,0 +1,42 @@
+{
+  "sections": {
+    "header": {
+      "type": "header",
+      "settings": {
+        "topbar_text": "Envío gratis en pedidos +50€ — Iluminación y herramientas al mejor precio"
+      }
+    },
+    "hero": {
+      "type": "hero-banner",
+      "settings": {
+        "tag": "Iluminación & Herramientas — Europa",
+        "title": "La luz que",
+        "title_highlight": "transforma tu hogar",
+        "description": "Apliques nórdicos, tiras LED 220V y herramientas eléctricas. Envíos a toda Europa.",
+        "btn_primary_label": "Ver productos",
+        "btn_secondary_label": "Ver ofertas"
+      }
+    },
+    "products": {
+      "type": "featured-products",
+      "settings": {
+        "tag": "Catálogo",
+        "title": "Nuestros productos",
+        "products_to_show": 6,
+        "show_view_all": true
+      }
+    },
+    "footer": {
+      "type": "footer",
+      "settings": {
+        "offer_label": "Oferta especial",
+        "offer_title": "10% de descuento hoy",
+        "offer_sub": "Usa el código FLASH10 al pagar",
+        "nl_title": "10% de descuento en tu primer pedido",
+        "nl_sub": "Suscríbete y recibe ofertas exclusivas en tu email",
+        "description": "Iluminación y herramientas eléctricas de calidad. Envíos a toda Europa desde España."
+      }
+    }
+  },
+  "order": ["hero", "products", "footer"]
+}

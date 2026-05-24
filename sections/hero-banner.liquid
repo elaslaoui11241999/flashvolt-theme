@@ -1,0 +1,212 @@
+<style>
+  .hero {
+    min-height: 90vh;
+    background: #0d0d1a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 30% 50%, rgba(0,80,200,0.25) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 30%, rgba(240,165,0,0.12) 0%, transparent 50%);
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 0 48px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .hero-tag {
+    font-size: 11px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: #f0a500;
+    margin-bottom: 22px;
+    display: block;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+  }
+
+  .hero-h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 300;
+    color: #fff;
+    line-height: 1.12;
+    margin-bottom: 20px;
+    font-family: 'Rajdhani', sans-serif;
+  }
+
+  .hero-h1 strong {
+    font-weight: 600;
+    display: block;
+  }
+
+  .hero-p {
+    font-size: 15px;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 36px;
+    line-height: 1.8;
+    font-family: 'Rajdhani', sans-serif;
+  }
+
+  .hero-btns {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .hero-btn-primary {
+    background: #fff;
+    color: #111;
+    padding: 14px 32px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    text-decoration: none;
+    font-family: 'Rajdhani', sans-serif;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .hero-btn-primary:hover {
+    background: #f0a500;
+    color: #111;
+  }
+
+  .hero-btn-secondary {
+    background: transparent;
+    color: #fff;
+    padding: 14px 32px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border: 1px solid rgba(255,255,255,0.3);
+    cursor: pointer;
+    text-decoration: none;
+    font-family: 'Rajdhani', sans-serif;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .hero-btn-secondary:hover {
+    border-color: #f0a500;
+    color: #f0a500;
+  }
+
+  .trust {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-bottom: 1px solid #ebebeb;
+  }
+
+  .trust-item {
+    padding: 22px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-right: 1px solid #ebebeb;
+  }
+
+  .trust-item:last-child { border-right: none; }
+
+  .trust-icon { font-size: 24px; }
+
+  .trust-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: #111;
+    margin-bottom: 2px;
+    font-family: 'Rajdhani', sans-serif;
+  }
+
+  .trust-sub {
+    font-size: 11px;
+    color: #bbb;
+    font-family: 'Rajdhani', sans-serif;
+  }
+</style>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <span class="hero-tag">{{ section.settings.tag }}</span>
+    <h1 class="hero-h1">
+      {{ section.settings.title }}
+      <strong>{{ section.settings.title_highlight }}</strong>
+    </h1>
+    <p class="hero-p">{{ section.settings.description }}</p>
+    <div class="hero-btns">
+      <a href="{{ section.settings.btn_primary_url }}" class="hero-btn-primary">{{ section.settings.btn_primary_label }}</a>
+      <a href="{{ section.settings.btn_secondary_url }}" class="hero-btn-secondary">{{ section.settings.btn_secondary_label }}</a>
+    </div>
+  </div>
+</section>
+
+<div class="trust">
+  <div class="trust-item">
+    <span class="trust-icon">🚚</span>
+    <div>
+      <div class="trust-title">Envío Europa</div>
+      <div class="trust-sub">7–15 días</div>
+    </div>
+  </div>
+  <div class="trust-item">
+    <span class="trust-icon">🛡️</span>
+    <div>
+      <div class="trust-title">Garantía 2 años</div>
+      <div class="trust-sub">Todos los productos</div>
+    </div>
+  </div>
+  <div class="trust-item">
+    <span class="trust-icon">🔄</span>
+    <div>
+      <div class="trust-title">30 días devolución</div>
+      <div class="trust-sub">Sin preguntas</div>
+    </div>
+  </div>
+  <div class="trust-item">
+    <span class="trust-icon">🎧</span>
+    <div>
+      <div class="trust-title">Soporte 24/7</div>
+      <div class="trust-sub">Siempre disponibles</div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Hero Banner",
+  "settings": [
+    { "type": "text", "id": "tag", "label": "Tag", "default": "Iluminación & Herramientas — Europa" },
+    { "type": "text", "id": "title", "label": "Título línea 1", "default": "La luz que" },
+    { "type": "text", "id": "title_highlight", "label": "Título destacado", "default": "transforma tu hogar" },
+    { "type": "textarea", "id": "description", "label": "Descripción", "default": "Apliques nórdicos, tiras LED 220V y herramientas eléctricas. Envíos a toda Europa." },
+    { "type": "text", "id": "btn_primary_label", "label": "Botón principal", "default": "Ver productos" },
+    { "type": "url", "id": "btn_primary_url", "label": "URL botón principal" },
+    { "type": "text", "id": "btn_secondary_label", "label": "Botón secundario", "default": "Ver ofertas" },
+    { "type": "url", "id": "btn_secondary_url", "label": "URL botón secundario" }
+  ],
+  "presets": [{ "name": "Hero Banner" }]
+}
+{% endschema %}
